@@ -25,4 +25,23 @@ class RoverTest < Minitest::Test
       NASARover::Rover.new(position, 'H')
     end
   end
+
+  def test_rotating_left
+    position = NASARover::Position.new(1,1)
+    rover = NASARover::Rover.new(position, 'E')
+    rover.rotate_left
+    assert_equal "N", rover.direction
+  end
+
+  def test_rotating_right
+    position = NASARover::Position.new(1,1)
+    rover = NASARover::Rover.new(position, 'S')
+    rover.rotate_right
+    assert_equal "W", rover.direction
+  end
+
+  #def test_moving_east
+    #position = NASARover::Position.new(5, 6)
+    #rover = NASARover::Rover.new(position, 'E')
+  #end
 end

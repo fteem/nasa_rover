@@ -4,4 +4,5 @@ require "nasa_rover/plateau"
 require "nasa_rover/rover"
 
 module NASARover
+  # Your code here...
 end
