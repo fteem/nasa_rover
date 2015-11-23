@@ -69,4 +69,36 @@ class RoverTest < Minitest::Test
     rover = NASARover::Rover.new(position, 'W')
     refute rover.in_bounds?(2, 2)
   end
+
+  def test_moving_once_west
+    position = NASARover::Position.new(3,3)
+    rover = NASARover::Rover.new(position, 'W')
+    rover.move
+    assert_equal 2, rover.position.x
+    assert_equal 3, rover.position.y
+  end
+
+  def test_moving_once_east
+    position = NASARover::Position.new(3,3)
+    rover = NASARover::Rover.new(position, 'E')
+    rover.move
+    assert_equal 4, rover.position.x
+    assert_equal 3, rover.position.y
+  end
+
+  def test_moving_once_north
+    position = NASARover::Position.new(3,3)
+    rover = NASARover::Rover.new(position, 'N')
+    rover.move
+    assert_equal 3, rover.position.x
+    assert_equal 4, rover.position.y
+  end
+
+  def test_moving_once_south
+    position = NASARover::Position.new(3,3)
+    rover = NASARover::Rover.new(position, 'S')
+    rover.move
+    assert_equal 3, rover.position.x
+    assert_equal 2, rover.position.y
+  end
 end
