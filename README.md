@@ -2,5 +2,5 @@
 
 ## Usage
 
-Clone this repo and run `bin/nasa_rover`.
+Clone this repo and run `./bin/nasa_rover` from the project root.
 
