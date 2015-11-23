@@ -14,14 +14,14 @@ class PlateauTest < Minitest::Test
     assert_equal 6, @plateau.max_y
   end
 
-  def test_add_rover_valid_boundaries
+  def test_add_rover_in_boundaries
     position = NASARover::Position.new(2,2)
     rover = NASARover::Rover.new(position, "E")
     @plateau.add_rover(rover)
     assert rover, @plateau.rovers.first
   end
 
-  def test_add_rover_boundary_error
+  def test_add_rover_out_of_boundaries
     position = NASARover::Position.new(6,6)
     rover = NASARover::Rover.new(position, "E")
     assert_raises NASARover::RoverOutOfBoundsError do
