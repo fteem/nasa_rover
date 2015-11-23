@@ -11,26 +11,18 @@ module NASARover
 
     def rotate_left
       direction_index = VALID_DIRECTIONS.index(@direction)
-      next_direction_index = if direction_index-1 < VALID_DIRECTIONS.length-1
-                               direction_index - 1
-                             else
-                               VALID_DIRECTIONS.length-1
-                             end
+      next_direction_index = (direction_index - 1) % VALID_DIRECTIONS.length
       @direction = VALID_DIRECTIONS[next_direction_index]
     end
 
     def rotate_right
       direction_index = VALID_DIRECTIONS.index(@direction)
-      next_direction_index = if direction_index+1 > VALID_DIRECTIONS.length-1
-                               0
-                             else
-                               direction_index + 1
-                             end
+      next_direction_index = (direction_index + 1) % VALID_DIRECTIONS.length
       @direction = VALID_DIRECTIONS[next_direction_index]
     end
 
     def in_bounds?(max_x, max_y)
-      (1..max_x).include?(position.x) && (1..max_y).include?(position.y)
+      (0..max_x).include?(position.x) && (0..max_y).include?(position.y)
     end
 
     def move
@@ -47,7 +39,7 @@ module NASARover
     end
 
     def report_position
-      "#{position.x} #{position.y} #{direction}"
+      "Rover position: #{position.x} #{position.y} #{direction}"
     end
 
     private
