@@ -9,7 +9,11 @@ module NASARover
     end
 
     def add_rover(rover)
-      @rovers << rover
+      if rover.in_bounds?(@max_x, @max_y)
+        @rovers << rover
+      else
+        raise NASARover::RoverOutOfBoundsError.new("Rover is out of plateau bounds")
+      end
     end
   end
 end

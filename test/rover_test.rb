@@ -58,8 +58,15 @@ class RoverTest < Minitest::Test
     assert_equal "N", rover.direction
   end
 
-  #def test_moving_east
-    #position = NASARover::Position.new(5, 6)
-    #rover = NASARover::Rover.new(position, 'E')
-  #end
+  def test_in_bounds_when_inside_boundaries
+    position = NASARover::Position.new(1,1)
+    rover = NASARover::Rover.new(position, 'W')
+    assert rover.in_bounds?(2, 2)
+  end
+
+  def test_in_bounds_when_outside_boundaries
+    position = NASARover::Position.new(3,3)
+    rover = NASARover::Rover.new(position, 'W')
+    refute rover.in_bounds?(2, 2)
+  end
 end

@@ -23,6 +23,10 @@ module NASARover
       @direction = VALID_DIRECTIONS[next_direction_index]
     end
 
+    def in_bounds?(max_x, max_y)
+      (0..max_x).include?(position.x) && (0..max_y).include?(position.y)
+    end
+
     private
     def validate_direction! direction
       raise InvalidDirection.new(direction) unless VALID_DIRECTIONS.include?(direction)

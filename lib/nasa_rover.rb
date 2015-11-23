@@ -5,4 +5,5 @@ require "nasa_rover/rover"
 
 module NASARover
   # Your code here...
+  class RoverOutOfBoundsError < StandardError; end
 end
