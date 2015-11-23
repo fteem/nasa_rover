@@ -46,6 +46,10 @@ module NASARover
       end
     end
 
+    def report_position
+      "#{position.x} #{position.y} #{direction}"
+    end
+
     private
     def validate_direction! direction
       raise NASARover::InvalidDirection.new(direction) unless VALID_DIRECTIONS.include?(direction)

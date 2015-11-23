@@ -101,4 +101,10 @@ class RoverTest < Minitest::Test
     assert_equal 3, rover.position.x
     assert_equal 2, rover.position.y
   end
+
+  def test_report_position
+    position = NASARover::Position.new(3,3)
+    rover = NASARover::Rover.new(position, 'S')
+    assert "3 3 S", rover.report_position
+  end
 end
