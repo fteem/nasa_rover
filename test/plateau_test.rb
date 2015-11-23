@@ -14,4 +14,9 @@ class PlateauTest < Minitest::Test
     assert_equal 6, @plateau.max_y
   end
 
+  def test_add_rover
+    rover = NASARover::Rover.new
+    @plateau.add_rover(rover)
+    assert rover, @plateau.rovers.first
+  end
 end
