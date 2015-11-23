@@ -25,9 +25,8 @@ class NavigatorTest < Minitest::Test
   end
 
   def test_navigate_out_of_bounds
-    @navigator.navigate("M")
-    @navigator.navigate("M")
-    @navigator.navigate("M")
+    rover = NASARover::Rover.new(NASARover::Position.new(1,1), 'W')
+    @navigator = NASARover::Navigator.new(rover, @plateau)
     @navigator.navigate("M")
     @navigator.navigate("M")
     assert_raises NASARover::InvalidMoveError do
