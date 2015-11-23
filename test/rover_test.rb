@@ -21,7 +21,7 @@ class RoverTest < Minitest::Test
 
   def test_direction_validation_when_invalid_direction
     position = NASARover::Position.new(5, 6)
-    assert_raises NASARover::Rover::InvalidDirection do
+    assert_raises NASARover::InvalidDirection do
       NASARover::Rover.new(position, 'H')
     end
   end

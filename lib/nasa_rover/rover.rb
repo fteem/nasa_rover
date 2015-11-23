@@ -2,8 +2,6 @@ module NASARover
   class Rover
     VALID_DIRECTIONS = %w(N E S W)
 
-    class InvalidDirection < StandardError; end
-
     attr_reader :direction, :position
 
     def initialize(position, facing_direction)
@@ -29,7 +27,7 @@ module NASARover
 
     private
     def validate_direction! direction
-      raise InvalidDirection.new(direction) unless VALID_DIRECTIONS.include?(direction)
+      raise NASARover::InvalidDirection.new(direction) unless VALID_DIRECTIONS.include?(direction)
       direction
     end
   end

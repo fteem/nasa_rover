@@ -4,6 +4,6 @@ require "nasa_rover/plateau"
 require "nasa_rover/rover"
 
 module NASARover
-  # Your code here...
   class RoverOutOfBoundsError < StandardError; end
+  class InvalidDirection < StandardError; end
 end
