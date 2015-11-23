@@ -1,5 +1,5 @@
 require "rover/version"
+require "rover/position"
 
 module Rover
-  # Your code goes here...
 end
