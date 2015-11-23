@@ -23,4 +23,15 @@ class NavigatorTest < Minitest::Test
     assert_equal 4, @rover.position.x
     assert_equal 5, @rover.position.y
   end
+
+  def test_navigate_out_of_bounds
+    @navigator.navigate("M")
+    @navigator.navigate("M")
+    @navigator.navigate("M")
+    @navigator.navigate("M")
+    @navigator.navigate("M")
+    assert_raises NASARover::InvalidMoveError do
+      @navigator.navigate("M")
+    end
+  end
 end

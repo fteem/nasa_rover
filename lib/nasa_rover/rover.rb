@@ -30,19 +30,19 @@ module NASARover
     end
 
     def in_bounds?(max_x, max_y)
-      (0..max_x).include?(position.x) && (0..max_y).include?(position.y)
+      (1..max_x).include?(position.x) && (1..max_y).include?(position.y)
     end
 
     def move
       case @direction
       when "N"
-        position.y += 1
+        @position.north
       when "E"
-        position.x += 1
+        @position.east
       when "S"
-        position.y -= 1
+        @position.south
       when "W"
-        position.x -= 1
+        @position.west
       end
     end
 
@@ -52,7 +52,7 @@ module NASARover
 
     private
     def validate_direction! direction
-      raise NASARover::InvalidDirection.new(direction) unless VALID_DIRECTIONS.include?(direction)
+      raise NASARover::InvalidDirectionError.new(direction) unless VALID_DIRECTIONS.include?(direction)
       direction
     end
   end

@@ -18,8 +18,18 @@ module NASARover
       when "R"
         @rover.rotate_right
       when "M"
-        @rover.move
+        if can_move?
+          @rover.move
+        else
+          raise NASARover::InvalidMoveError.new("Cannot move there. Rover position: #{report_position}")
+        end
       end
     end
+
+    private
+    def can_move?
+      @rover.in_bounds?(@plateau.max_x, @plateau.max_y)
+    end
+
   end
 end
