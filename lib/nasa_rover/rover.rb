@@ -1,5 +1,6 @@
 module NASARover
   class Rover
+    VALID_DIRECTIONS = %w(N E S W)
 
     class InvalidDirection < StandardError; end
 
@@ -11,34 +12,20 @@ module NASARover
     end
 
     def rotate_left
-      case @direction
-      when "N"
-        @direction = "W"
-      when "E"
-        @direction = "N"
-      when "S"
-        @direction = "E"
-      when "W"
-        @direction = "S"
-      end
+      direction_index = VALID_DIRECTIONS.index(@direction)
+      next_direction_index = direction_index-1 < VALID_DIRECTIONS.length-1 ? direction_index - 1 : VALID_DIRECTIONS.length-1
+      @direction = VALID_DIRECTIONS[next_direction_index]
     end
 
     def rotate_right
-      case @direction
-      when "N"
-        @direction = "E"
-      when "E"
-        @direction = "S"
-      when "S"
-        @direction = "W"
-      when "W"
-        @direction = "N"
-      end
+      direction_index = VALID_DIRECTIONS.index(@direction)
+      next_direction_index = direction_index+1 > VALID_DIRECTIONS.length-1 ? 0 : direction_index + 1
+      @direction = VALID_DIRECTIONS[next_direction_index]
     end
 
     private
     def validate_direction! direction
-      raise InvalidDirection.new(direction) unless %q(N S W E).include?(direction)
+      raise InvalidDirection.new(direction) unless VALID_DIRECTIONS.include?(direction)
       direction
     end
   end

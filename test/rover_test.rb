@@ -35,9 +35,27 @@ class RoverTest < Minitest::Test
 
   def test_rotating_right
     position = NASARover::Position.new(1,1)
-    rover = NASARover::Rover.new(position, 'S')
+    rover = NASARover::Rover.new(position, 'W')
     rover.rotate_right
-    assert_equal "W", rover.direction
+    assert_equal "N", rover.direction
+  end
+
+  def test_multiple_rotation_right
+    position = NASARover::Position.new(1,1)
+    rover = NASARover::Rover.new(position, 'W')
+    rover.rotate_right
+    rover.rotate_right
+    rover.rotate_right
+    assert_equal "S", rover.direction
+  end
+
+  def test_multiple_rotation_left
+    position = NASARover::Position.new(1,1)
+    rover = NASARover::Rover.new(position, 'W')
+    rover.rotate_left
+    rover.rotate_left
+    rover.rotate_left
+    assert_equal "N", rover.direction
   end
 
   #def test_moving_east
