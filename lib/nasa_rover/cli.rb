@@ -1,10 +1,6 @@
 module NASARover
   class CLI
 
-    ROVER_COMMANDS_FORMAT  = /^[LRM]+$/
-    ROVER_LOCATION_FORMAT  = /^(\d) (\d) ([NESW])$/
-    PLATEAU_INPUT_FORMAT   = /^(\d) (\d)$/
-
     def self.start
       new.start
     end
