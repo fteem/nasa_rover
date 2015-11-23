@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rover/version'
+require 'nasa_rover/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rover"
-  spec.version       = Rover::VERSION
+  spec.name          = "nasa_rover"
+  spec.version       = NASARover::VERSION
   spec.authors       = ["Ile Eftimov"]
   spec.email         = ["ileeftimov@gmail.com"]
 

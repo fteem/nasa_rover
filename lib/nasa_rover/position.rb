@@ -1,4 +1,4 @@
-module Rover
+module NASARover
   class Position
     attr_reader :x, :y
     def initialize(x, y)
